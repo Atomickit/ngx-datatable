@@ -1,9 +1,17 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { DatatableProgressBarDirective } from './progress-bar.directive';
 
 @Component({
   selector: 'datatable-progress',
   template: `
-    <div class="progress-linear" role="progressbar">
+    <ng-template
+      *ngIf="progressBarTemplate"
+      [ngTemplateOutlet]="progressBarTemplate.template"
+      [ngTemplateOutletContext]="{}"
+    >
+    </ng-template>
+
+    <div *ngIf="!progressBarTemplate" class="progress-linear" role="progressbar">
       <div class="container">
         <div class="bar"></div>
       </div>
@@ -11,4 +19,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProgressBarComponent {}
+export class ProgressBarComponent {
+  @Input() progressBarTemplate: DatatableProgressBarDirective;
+}

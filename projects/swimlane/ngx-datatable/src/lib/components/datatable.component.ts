@@ -1,26 +1,26 @@
 import {
-  Component,
-  Input,
-  Output,
-  ElementRef,
-  EventEmitter,
-  ViewChild,
-  HostListener,
-  ContentChildren,
-  OnInit,
-  QueryList,
   AfterViewInit,
-  HostBinding,
-  ContentChild,
-  DoCheck,
-  KeyValueDiffers,
-  KeyValueDiffer,
-  ViewEncapsulation,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  SkipSelf,
+  Component,
+  ContentChild,
+  ContentChildren,
+  DoCheck,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Inject,
+  Input,
+  KeyValueDiffer,
+  KeyValueDiffers,
+  OnInit,
   Optional,
-  Inject
+  Output,
+  QueryList,
+  SkipSelf,
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 
 import { DatatableGroupHeaderDirective } from './body/body-group-header.directive';
@@ -43,8 +43,9 @@ import { ScrollbarHelper } from '../services/scrollbar-helper.service';
 import { ColumnChangesService } from '../services/column-changes.service';
 import { DimensionsHelper } from '../services/dimensions-helper.service';
 import { throttleable } from '../utils/throttle';
-import { forceFillColumnWidths, adjustColumnWidths } from '../utils/math';
+import { adjustColumnWidths, forceFillColumnWidths } from '../utils/math';
 import { sortRows } from '../utils/sort';
+import { DatatableProgressBarDirective } from './body/progress-bar.directive';
 
 @Component({
   selector: 'ngx-datatable',
@@ -585,6 +586,12 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
    */
   @ContentChild(DatatableFooterDirective)
   footer: DatatableFooterDirective;
+
+  /**
+   * Footer template gathered from the ContentChild
+   */
+  @ContentChild(DatatableProgressBarDirective)
+  progressBar: DatatableProgressBarDirective;
 
   /**
    * Reference to the body component for manually

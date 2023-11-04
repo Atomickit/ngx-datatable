@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollbarHelper } from './services/scrollbar-helper.service';
 import { DimensionsHelper } from './services/dimensions-helper.service';
@@ -31,6 +31,8 @@ import { DataTableColumnCellTreeToggle } from './components/columns/tree.directi
 import { DatatableFooterDirective } from './components/footer/footer.directive';
 import { DatatableGroupHeaderTemplateDirective } from './components/body/body-group-header-template.directive';
 import { DataTableSummaryRowComponent } from './components/body/summary/summary-row.component';
+import { DatatableProgressBarDirective } from './components/body/progress-bar.directive';
+import { DataTableProgressBarTemplateDirective } from './components/body/progress-bar-template.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -63,6 +65,8 @@ import { DataTableSummaryRowComponent } from './components/body/summary/summary-
     DataTableColumnCellTreeToggle,
     DatatableFooterDirective,
     DatatableGroupHeaderTemplateDirective,
+    DataTableProgressBarTemplateDirective,
+    DatatableProgressBarDirective,
     DataTableSummaryRowComponent
   ],
   exports: [
@@ -76,6 +80,8 @@ import { DataTableSummaryRowComponent } from './components/body/summary/summary-
     DataTableColumnCellTreeToggle,
     DataTableFooterTemplateDirective,
     DatatableFooterDirective,
+    DatatableProgressBarDirective,
+    DataTableProgressBarTemplateDirective,
     DataTablePagerComponent,
     DatatableGroupHeaderTemplateDirective
   ]

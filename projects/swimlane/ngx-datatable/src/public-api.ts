@@ -11,6 +11,8 @@ export * from './lib/components/body/body.component';
 export * from './lib/components/body/body-cell.component';
 export * from './lib/components/body/body-row.component';
 export * from './lib/components/body/progress-bar.component';
+export * from './lib/components/body/progress-bar.directive';
+export * from './lib/components/body/progress-bar-template.directive';
 export * from './lib/components/body/scroller.component';
 export * from './lib/components/body/body-row-wrapper.component';
 export * from './lib/components/body/selection.component';

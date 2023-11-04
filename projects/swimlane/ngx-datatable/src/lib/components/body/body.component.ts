@@ -1,25 +1,26 @@
 import {
-  Component,
-  Output,
-  EventEmitter,
-  Input,
-  HostBinding,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
-  ViewChild,
-  OnInit,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
   OnDestroy,
-  ChangeDetectionStrategy
+  OnInit,
+  Output,
+  ViewChild
 } from '@angular/core';
 import { ScrollerComponent } from './scroller.component';
 import { SelectionType } from '../../types/selection.type';
-import { columnsByPin, columnGroupWidths } from '../../utils/column';
+import { columnGroupWidths, columnsByPin } from '../../utils/column';
 import { RowHeightCache } from '../../utils/row-height-cache';
 import { translateXY } from '../../utils/translate';
+import { DatatableProgressBarDirective } from './progress-bar.directive';
 
 @Component({
   selector: 'datatable-body',
   template: `
-    <datatable-progress *ngIf="loadingIndicator"> </datatable-progress>
+    <datatable-progress *ngIf="loadingIndicator" [progressBarTemplate]="progressBarTemplate"> </datatable-progress>
     <datatable-selection
       #selector
       [selected]="selected"
@@ -146,6 +147,7 @@ export class DataTableBodyComponent implements OnInit, OnDestroy {
   @Input() summaryRow: boolean;
   @Input() summaryPosition: string;
   @Input() summaryHeight: number;
+  @Input() progressBarTemplate: DatatableProgressBarDirective;
 
   @Input() set pageSize(val: number) {
     this._pageSize = val;
